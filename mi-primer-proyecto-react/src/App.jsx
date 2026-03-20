@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
+import SaludoMarimar from './Components/SaludoMarimar'
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
           Count is {count}
         </button>
       </section>
-
+<SaludoMarimar/>
       <div className="ticks"></div>
 
       <section id="next-steps">
