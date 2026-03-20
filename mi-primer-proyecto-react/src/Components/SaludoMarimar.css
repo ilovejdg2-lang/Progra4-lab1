@@ -1,0 +1,19 @@
+.saludo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.marimar {
+  background: #e1f5fe;
+}
+
+.marimar .saludo_title {
+  color: #0277bd;
+}
+
+.marimar .saludo_extra {
+  color: #01579b;
+}
