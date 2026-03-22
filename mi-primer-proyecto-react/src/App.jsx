@@ -5,7 +5,6 @@ import heroImg from './assets/hero.png'
 import './App.css'
 import SaludoMarimar from './Components/SaludoMarimar'
 
-
 function App() {
   const [count, setCount] = useState(0)
 
