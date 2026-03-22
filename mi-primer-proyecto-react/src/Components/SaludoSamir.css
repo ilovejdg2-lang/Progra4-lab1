@@ -1,0 +1,19 @@
+.saludo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.samir {
+  background: #e8f5e9;
+}
+
+.samir .saludo_title {
+  color: #2e7d32;
+}
+
+.samir .saludo_extra {
+  color: #1b5e20;
+}
