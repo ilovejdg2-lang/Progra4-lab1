@@ -4,6 +4,8 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 import SaludoMarimar from './Components/SaludoMarimar'
+import SaludoSamir from './Components/SaludoSamir'
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -30,6 +32,7 @@ function App() {
         </button>
       </section>
 <SaludoMarimar/>
+<SaludoSamir/>
       <div className="ticks"></div>
 
       <section id="next-steps">
