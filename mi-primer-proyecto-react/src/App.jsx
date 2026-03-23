@@ -5,6 +5,7 @@ import heroImg from './assets/hero.png'
 import './App.css'
 import SaludoMarimar from './Components/SaludoMarimar'
 import SaludoSamir from './Components/SaludoSamir'
+import SaludoFati from './Components/SaludoFati'
 
 
 function App() {
