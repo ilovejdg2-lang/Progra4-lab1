@@ -1,0 +1,19 @@
+.saludo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.fati{
+  background: #ffe4ec;
+}
+
+.fati .saludo_title {
+  color: #ad1457;
+}
+
+.fati .saludo_extra {
+  color: #880e4f;
+}
