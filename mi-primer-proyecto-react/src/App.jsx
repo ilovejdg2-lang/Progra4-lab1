@@ -6,6 +6,7 @@ import './App.css'
 import SaludoMarimar from './Components/SaludoMarimar'
 import SaludoSamir from './Components/SaludoSamir'
 import SaludoFati from './Components/SaludoFati'
+import SaludoYeisson from './Components/SaludoYeisson'
 
 
 function App() {
@@ -35,6 +36,8 @@ function App() {
 <SaludoMarimar/>
 <SaludoSamir/>
 <SaludoFati/>
+<SaludoYeisson/>
+
       <div className="ticks"></div>
 
       <section id="next-steps">

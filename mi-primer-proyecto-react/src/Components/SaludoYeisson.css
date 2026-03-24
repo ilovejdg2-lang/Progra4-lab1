@@ -1,0 +1,19 @@
+.saludo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.yeisson {
+  background: #fdf8f0;
+}
+
+.yeisson .saludo_title {
+  color: #5d4037;
+}
+
+.yeisson .saludo_extra {
+  color: #8d6e63;
+}
