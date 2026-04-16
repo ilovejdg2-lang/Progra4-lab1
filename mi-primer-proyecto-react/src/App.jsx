@@ -3,10 +3,12 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
+import BuscarPoke from './Components/BuscarPoke'
 import SaludoMarimar from './Components/SaludoMarimar'
 import SaludoSamir from './Components/SaludoSamir'
 import SaludoFati from './Components/SaludoFati'
 import SaludoYeisson from './Components/SaludoYeisson'
+import QuizComponent from './Components/QuizComponent'
 
 
 function App() {
@@ -37,7 +39,8 @@ function App() {
 <SaludoSamir/>
 <SaludoFati/>
 <SaludoYeisson/>
-
+<BuscarPoke/>   
+<QuizComponent/> 
       <div className="ticks"></div>
 
       <section id="next-steps">
