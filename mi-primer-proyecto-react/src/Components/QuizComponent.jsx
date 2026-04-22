@@ -11,17 +11,21 @@ export default function QuizComponent() {
   const [puntaje, setPuntaje] = useState(0);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState("");
-
+  const masterKey = import.meta.env.VITE_JSONBIN_MASTER_KEY;
   useEffect(() => {
     const headers = new Headers();
-    headers.append(
-      "X-Master-Key",
-      "$2a$10$V0wArYnq0AB.CCejJkNghO1FqkcsY7dXpOqauYKAVC/CMC.3OZyP2"
-    );
+
+    if (masterKey) {
+      headers.set("X-Master-Key", masterKey);
+    }
 
     const fetchQuiz = async () => {
       try {
         setCargando(true);
+
+        if (!masterKey) {
+          throw new Error("Falta VITE_JSONBIN_MASTER_KEY en el archivo .env");
+        }
 
         const response = await fetch(
           "https://api.jsonbin.io/v3/b/69dd50d8856a6821892ddcc4",
