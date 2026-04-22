@@ -1,0 +1,501 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Noto+Serif+KR:wght@300;400;600&family=Rajdhani:wght@300;400;500;600&display=swap');
+/* mq=manwhaquiz */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.mq-root {
+  font-family: 'Rajdhani', sans-serif;
+  background: #1a0a2e;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.mq-root::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,0.03) 60px),
+    repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,0.03) 60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+
+.mq-container {
+  position: relative;
+  z-index: 1;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+.mq-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  animation: mqFadeDown 0.8s ease;
+}
+
+.mq-badge {
+  display: inline-block;
+  background: #c0392b;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  padding: 4px 16px;
+  margin-bottom: 1rem;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+}
+
+.mq-title {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: clamp(2rem, 6vw, 3.8rem);
+  color: #fdf6e3;
+  line-height: 1.1;
+  text-shadow: 3px 3px 0 #c0392b, 6px 6px 0 rgba(192, 57, 43, 0.3);
+  margin-bottom: 0.5rem;
+}
+
+.mq-subtitle {
+  font-family: 'Noto Serif KR', serif;
+  color: #d4a017;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  opacity: 0.9;
+}
+
+.mq-deco {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1rem 0;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.4rem;
+  color: rgba(212, 160, 23, 0.4);
+  letter-spacing: 0.5rem;
+}
+
+.mq-loading {
+  text-align: center;
+  padding: 4rem;
+}
+
+.mq-loading-text {
+  font-family: 'Noto Serif KR', serif;
+  color: rgba(253, 246, 227, 0.7);
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+.mq-progress {
+  margin-bottom: 1.5rem;
+  animation: mqFadeIn 0.5s ease;
+}
+
+.mq-progress-header {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(253, 246, 227, 0.6);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.mq-progress-bar {
+  height: 6px;
+  background: rgba(253, 246, 227, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.mq-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #d4a017, #c0392b);
+  border-radius: 3px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.mq-progress-fill::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 0;
+  height: 100%; width: 30px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4));
+}
+
+.mq-card {
+  background: #fdf6e3;
+  border: 3px solid #2c1a0e;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 6px 6px 0 #4a1a6e, 12px 12px 0 rgba(74, 26, 110, 0.3);
+  position: relative;
+  animation: mqPanelIn 0.5s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+.mq-card::before,
+.mq-card::after {
+  content: '';
+  position: absolute;
+  width: 20px; height: 20px;
+  border-color: #2c1a0e;
+  border-style: solid;
+  z-index: 2;
+}
+.mq-card::before { top: -1px; left: -1px; border-width: 3px 0 0 3px; }
+.mq-card::after  { bottom: -1px; right: -1px; border-width: 0 3px 3px 0; }
+
+.mq-card-banner {
+  background: #1a0a2e;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1.25rem;
+  border-bottom: 3px solid #2c1a0e;
+}
+
+.mq-roman {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 0.75rem;
+  color: #d4a017;
+  letter-spacing: 3px;
+}
+
+
+
+.mq-card-body {
+  padding: 2rem 1.75rem 1.5rem;
+  position: relative;
+}
+
+.mq-card-body::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(44, 26, 14, 0.06) 1px, transparent 1px);
+  background-size: 6px 6px;
+  pointer-events: none;
+}
+
+.mq-img-wrap {
+  margin-bottom: 1.25rem;
+  border: 2px solid #2c1a0e;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  height: 350px;
+  background: #1a3a5c;
+}
+
+.mq-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: sepia(20%) contrast(1.05);
+}
+
+.mq-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(26, 10, 46, 0.7) 100%);
+}
+
+.mq-question {
+  position: relative;
+  background: #fff;
+  border: 2.5px solid #2c1a0e;
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.1rem;
+  color: #1a0a2e;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  z-index: 1;
+}
+
+.mq-question::before {
+  content: '';
+  position: absolute;
+  bottom: -14px; left: 24px;
+  width: 0; height: 0;
+  border-left: 12px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 14px solid #2c1a0e;
+}
+
+.mq-question::after {
+  content: '';
+  position: absolute;
+  bottom: -10px; left: 26px;
+  width: 0; height: 0;
+  border-left: 10px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 12px solid #fff;
+}
+
+.mq-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+
+.mq-option {
+  background: #f5ead8;
+  border: 2.5px solid #2c1a0e;
+  border-radius: 2px;
+  padding: 0.9rem 1rem;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1a0a2e;
+  line-height: 1.4;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
+}
+
+.mq-option:hover:not(:disabled) {
+  background: #fff;
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 #2c1a0e;
+}
+
+.mq-option:disabled { cursor: default; }
+
+.mq-option-letter {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 0.7rem;
+  color: #c0392b;
+  min-width: 14px;
+  padding-top: 2px;
+}
+
+.mq-option.mq-correct {
+  background: #d4edda;
+  border-color: #2a7a3a;
+  box-shadow: 4px 4px 0 #2a7a3a;
+  transform: translate(-2px, -2px);
+}
+
+.mq-option.mq-correct .mq-option-letter { color: #2a7a3a; }
+
+.mq-option.mq-wrong {
+  background: #f8d7da;
+  border-color: #c0392b;
+  box-shadow: 4px 4px 0 #c0392b;
+}
+
+.mq-option.mq-wrong .mq-option-letter { color: #c0392b; }
+
+.mq-option.mq-dimmed { opacity: 0.45; }
+
+.mq-explanation {
+  margin-top: 1.25rem;
+  border: 3px solid #2c1a0e;
+  border-radius: 2px;
+  overflow: hidden;
+  animation: mqSlideUp 0.4s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.mq-exp-header {
+  background: #1a0a2e;
+  padding: 0.5rem 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.mq-exp-icon {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: #d4a017;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1a0a2e;
+  flex-shrink: 0;
+}
+
+.mq-exp-title {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  color: #d4a017;
+  text-transform: uppercase;
+}
+
+.mq-exp-body {
+  background: #fffef7;
+  border-top: 2px solid #2c1a0e;
+  padding: 1rem 1.25rem;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.92rem;
+  color: #1a0a2e;
+  line-height: 1.75;
+}
+
+.mq-result-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 12px;
+  border-radius: 2px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.mq-badge-correct { background: #d4edda; color: #2a7a3a; border: 1.5px solid #2a7a3a; }
+.mq-badge-wrong   { background: #f8d7da; color: #c0392b; border: 1.5px solid #c0392b; }
+
+.mq-next {
+  display: block;
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.9rem;
+  background: #1a0a2e;
+  color: #fdf6e3;
+  border: 3px solid #fdf6e3;
+  border-radius: 2px;
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: transform 0.15s, box-shadow 0.15s;
+  position: relative;
+  z-index: 1;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+
+.mq-next:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 #d4a017;
+}
+
+.mq-score-panel {
+  background: #fdf6e3;
+  border: 4px solid #2c1a0e;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 8px 8px 0 #c0392b, 16px 16px 0 rgba(192, 57, 43, 0.2);
+  animation: mqFadeIn 0.8s ease;
+}
+
+.mq-score-top {
+  background: #1a0a2e;
+  padding: 2rem;
+  text-align: center;
+  border-bottom: 4px solid #2c1a0e;
+  position: relative;
+}
+
+.mq-score-top::before {
+  content: '완료';
+  font-family: 'Noto Serif KR', serif;
+  position: absolute;
+  top: 10px; right: 16px;
+  font-size: 1.2rem;
+  color: rgba(212, 160, 23, 0.25);
+  letter-spacing: 2px;
+}
+
+.mq-score-label {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  color: #d4a017;
+  margin-bottom: 0.75rem;
+}
+
+.mq-score-num {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: clamp(3rem, 12vw, 6rem);
+  color: #fdf6e3;
+  line-height: 1;
+  text-shadow: 4px 4px 0 #c0392b;
+}
+
+.mq-score-max {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  color: rgba(253, 246, 227, 0.5);
+  letter-spacing: 2px;
+  margin-top: 0.25rem;
+}
+
+.mq-score-body { padding: 2rem; }
+
+
+
+
+.mq-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.mq-stat {
+  background: #f5ead8;
+  border: 2px solid #2c1a0e;
+  border-radius: 2px;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.mq-stat-val {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 1.6rem;
+  color: #1a0a2e;
+  display: block;
+}
+
+.mq-stat-lbl {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #888;
+  margin-top: 2px;
+  display: block;
+}
+
+.mq-restart {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background: #c0392b;
+  color: #fff;
+  border: 3px solid #2c1a0e;
+  border-radius: 2px;
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: transform 0.15s, box-shadow 0.15s;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+
+.mq-restart:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 #2c1a0e;
+}

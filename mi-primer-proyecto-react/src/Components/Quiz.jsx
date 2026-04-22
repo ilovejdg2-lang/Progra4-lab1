@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Confetti from "react-confetti";
-import "../index.css";
+import "./Quiz.css";
 
-const API_KEY = "$2a$10$fMIsYFcNioS1WTjjOSvtDOrn2J41APNRVVGFbRQLOy2aEX72VZIYa";
+const API_KEY = import.meta.env.VITE_JSONBIN_ACCESS_KEY;
 const URL = "https://api.jsonbin.io/v3/b/69dc6e2faaba882197f1c968";
 const LETTERS = ["A", "B", "C", "D"];
 
@@ -14,6 +14,7 @@ export default function Quiz() {
   const [showConfetti, setShowConfetti] = useState(false);
   const [showScore, setShowScore] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const pregunta = preguntas[current];
   const total = preguntas.length;
@@ -22,11 +23,15 @@ export default function Quiz() {
     const fetchQuiz = async () => {
       try {
         const response = await fetch(URL, { headers: { "X-Access-Key": API_KEY } });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
         const data = await response.json();
         setPreguntas(data.record);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error al obtener los datos del cuestionario:", error);
+      } catch (err) {
+        console.error("Error al obtener los datos del cuestionario:", err);
+        setError("No se pudieron cargar las preguntas. Verifica tu API key.");
+      } finally {
         setLoading(false);
       }
     };
@@ -52,7 +57,22 @@ export default function Quiz() {
     }
   };
 
-  if (loading) return <div className="mq-loading"><div className="mq-loading-text">Cargando...</div></div>;
+  if (loading) {
+    return (
+      <div className="mq-loading">
+        <div className="mq-loading-text">Cargando...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="mq-loading">
+        <div className="mq-loading-text">{error}</div>
+      </div>
+    );
+  }
+
   if (!pregunta && !showScore) return null;
 
   const pct = Math.round((score / total) * 100);
@@ -75,7 +95,10 @@ export default function Quiz() {
                 <span>{current + 1} / {total}</span>
               </div>
               <div className="mq-progress-bar">
-                <div className="mq-progress-fill" style={{ width: `${((current + 1) / total) * 100}%` }} />
+                <div
+                  className="mq-progress-fill"
+                  style={{ width: `${((current + 1) / total) * 100}%` }}
+                />
               </div>
             </div>
 
@@ -99,10 +122,13 @@ export default function Quiz() {
                     <button
                       key={index}
                       className={
-                        selected === null ? "mq-option" :
-                        index === pregunta.correct_answer ? "mq-option mq-correct" :
-                        index === selected ? "mq-option mq-wrong" :
-                        "mq-option mq-dimmed"
+                        selected === null
+                          ? "mq-option"
+                          : index === pregunta.correct_answer
+                          ? "mq-option mq-correct"
+                          : index === selected
+                          ? "mq-option mq-wrong"
+                          : "mq-option mq-dimmed"
                       }
                       disabled={selected !== null}
                       onClick={() => handleAnswerClick(index)}
@@ -121,7 +147,13 @@ export default function Quiz() {
                         <div className="mq-exp-title">Explicación</div>
                       </div>
                       <div className="mq-exp-body">
-                        <div className={`mq-result-badge ${selected === pregunta.correct_answer ? "mq-badge-correct" : "mq-badge-wrong"}`}>
+                        <div
+                          className={`mq-result-badge ${
+                            selected === pregunta.correct_answer
+                              ? "mq-badge-correct"
+                              : "mq-badge-wrong"
+                          }`}
+                        >
                           {selected === pregunta.correct_answer ? "Correcto" : "Incorrecto"}
                         </div>
                         <p>{pregunta.explanation ?? "Sin explicación disponible"}</p>
