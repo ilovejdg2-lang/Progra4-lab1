@@ -8,14 +8,14 @@ export default function QuizFati() {
   const [selected, setSelected] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
   const [showConfetti, setShowConfetti] = useState(false);
-  const key = import.meta.env.VITE_JSONBIN_MASTER_KEY;
+  const key = import.meta.env.VITE_JSONBIN_ACCESS_KEY;
   
   
     useEffect(() => {
     const fetchQuiz = async () => {
       const headers = new Headers();
       headers.append(
-        "X-Master-Key", key
+        "X-ACCESS-Key", key
 
       );
 
