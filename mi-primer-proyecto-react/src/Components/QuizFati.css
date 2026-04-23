@@ -30,11 +30,13 @@
   background-color: #ffe4ec;
 }
 
+/* correcta */
 .correct {
   background-color: #4caf50 !important;
   color: white;
 }
 
+/* incorrecta */
 .incorrect {
   background-color: #f44336 !important;
   color: white;
